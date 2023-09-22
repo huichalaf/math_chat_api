@@ -1,0 +1,280 @@
+[
+    {
+      "name": "evaluate_expressions",
+      "description": "take a math expression and returns the result of the expression supports operators such as (+,-,/,*,**) and sqrt, also supports math expressions like pi or e, it can't make a graph",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "expression": {
+            "type": "string",
+            "description": "expression"
+          }
+        },
+        "required": ["expression"]
+      }
+    },
+    {
+      "name": "trigonometric_function",
+      "description": "take a trigonometric function and a number, and returns the result of the corresponding operation",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "number": {
+            "type": "number",
+            "description": "number"
+          },
+          "function": {
+            "type": "string",
+            "description": "trigonometric function"
+          },
+          "tipo": {
+            "type": "string",
+            "description": "degrees or radians"
+          }
+        },
+        "required": ["number", "function", "tipo"]
+      }
+    },
+    {
+        "name": "integrate",
+        "description": "take a function and the limits of integration (two numbers), and returns the result of the operation and the calculated integral",
+        "parameters":{
+            "type": "object",
+            "properties": {
+                "function": {
+                    "type": "string",
+                    "description": "function"
+                },
+                "upLimit": {
+                    "type": "number",
+                    "description": "low limit"
+                },
+                "lowLimit": {
+                    "type": "number",
+                    "description": "up limit"
+                }
+            },
+            "required": ["function"]
+        }
+    },
+    {
+        "name": "limit",
+        "description": "take the function and the number that x tend to, calculate the limit and returns the result",
+        "parameters":{
+            "type": "object",
+            "properties": {
+                "function": {
+                    "type": "string",
+                    "description": "function"
+                },
+                "number": {
+                    "type": "number",
+                    "description": "number"
+                }
+            },
+            "required": ["function", "number"]
+        }
+    },
+    {
+      "name": "derivate",
+      "description": "take a function and a number, and returns the result of the derivate evaluated and the derivative function",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "function": {
+            "type": "string",
+            "description": "function"
+          },
+          "number": {
+            "type": "number",
+            "description": "number"
+          }
+        },
+        "required": ["function", "number"]
+      }
+    },
+    {
+      "name": "statistics",
+      "description": "take a list of numbers and returns the result of the operation(mean, median, mode, standard deviation, variance)",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "numbers": {
+            "type": "string",
+            "description": "numbers separated by commas"
+          },
+          "operation": {
+            "type": "string",
+            "description": "operation"
+          }
+        },
+        "required": ["numbers", "operation"]
+      }
+    },
+    {
+      "name": "logarithm",
+      "description": "take a base and a number, and returns the result of the log operation",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "base": {
+            "type": "number",
+            "description": "base"
+          },
+          "number": {
+            "type": "number",
+            "description": "number"
+          }
+        },
+        "required": ["base", "number"]
+      }
+    },
+    {
+      "name": "plot",
+      "description": "a function that creates a graph, takes a function or expression and two numbers, plot the function and returns if the graph was correctly generated or not (True or False)",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "function": {
+            "type": "string",
+            "description": "function"
+          },
+          "upLimit": {
+            "type": "number",
+            "description": "low limit"
+          },
+          "lowLimit": {
+            "type": "number",
+            "description": "up limit"
+          }
+        },
+        "required": ["function", "upLimit", "lowLimit"]
+      }
+    },
+    {
+      "name": "matrix_operation",
+      "description": "take a matrix, the operation, and returns the result of the operation, the numbers of the matrix needs to be separated by commas, and the rows by ; the operations are: determinant, inverse, transpose, rank, eigenvalues, eigenvectors, trace",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "matrix": {
+            "type": "string",
+            "description": "matrix"
+          },
+          "operation":{
+            "type": "string",
+            "description": "operation"
+          }
+        },
+        "required": ["matrix", "dimention", "operation"]
+      }
+    },
+    {
+      "name": "matrix_multiplication",
+      "description": "take two matrix and returns the result of the operation, the numbers of the matrix needs to be separated by commas and the rows by ;",
+      "parameters":{
+        "type": "object",
+        "properties": {
+          "matrix1": {
+            "type": "string",
+            "description": "matrix1"
+          },
+          "matrix2": {
+            "type": "string",
+            "description": "matrix2"
+          }
+        }
+      }
+    },
+    {
+      "name": "matrix_solve",
+      "description": "take a matrix and a vector and returns the result of the gaussian elimination, the numbers of the matrix needs to be separated by commas",
+      "parameters":{
+        "type": "object",
+        "properties": {
+          "matrix": {
+            "type": "string",
+            "description": "matrix"
+          },
+          "vector": {
+            "type": "string",
+            "description": "vector"
+          }
+        }
+      }
+    },
+    {
+      "name": "derivative_applications",
+      "description": "applications of the derivative take a operation type, a function, a variable name (x for example) and a number or interval(numbers separated by commas), returns the result of the operation, the operations are: differential, rate_of_change, optimize",
+      "parameters":{
+        "type": "object",
+        "properties":{
+          "operation_type": {
+            "type": "string",
+            "description": "operation type"
+          },
+          "function": {
+            "type": "string",
+            "description": "function"
+          },
+          "variable": {
+            "type": "string",
+            "description": "variable"
+          },
+          "number": {
+            "type": "string",
+            "description": "number or interval"
+          }
+        },
+        "required": ["operation_type", "function", "variable", "number"]
+      }
+    },
+    {
+      "name": "integral_applications",
+      "description": "applications of the integral, take a operation type (volume_revolution, length_curve, area_surface), a function, a variable name (x for example), a interval(numbers separated by commas), and the axis(x, y, x=y), returns the result of the operation, the operations are: volume of revolution solid, arc_length, surface_area",
+      "parameters":{
+        "type": "object",
+        "properties": {
+          "operation_type": {
+            "type": "string",
+            "description": "operation type"
+          },
+          "variable": {
+            "type": "string",
+            "description": "variable"
+          },
+          "function": {
+            "type": "string",
+            "description": "function"
+          },
+          "interval": {
+            "type": "string",
+            "description": "interval"
+          },
+          "axis": {
+            "type": "string",
+            "description": "axis"
+          }
+        },
+        "required": ["operation_type", "variable", "function", "interval", "axis"]
+      }
+    },
+    {
+      "name": "cartesian_transform",
+      "description": "transform the coordinates, takes a type of transformation(polar_to_cartesian, cartesian_to_polar, parametric_to_cartesian, cartesian_to_parametric, polar_to_parametric, parametric_to_polar) and the coordinates, may be a list [x,y], a list[r, theta_degrees] or a list [t, x, y], returns the new coordinates",
+      "parameters":{
+        "type": "object",
+        "properties": {
+          "operation_type": {
+            "type": "string",
+            "description": "operation type"
+          },
+          "coordinates": {
+            "type": "string",
+            "description": "coordinates"
+          }
+        },
+        "required": ["operation_type", "coordinates"]
+      }
+    }
+  ]
