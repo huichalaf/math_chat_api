@@ -4,6 +4,8 @@ from fastapi.middleware.cors import CORSMiddleware
 import os, sys
 from dotenv import load_dotenv
 import asyncio
+import uvicorn
+from main import chat
 
 load_dotenv()
 
@@ -27,15 +29,30 @@ async def root():
     return {"message": "Running..."}
 
 @app.post("/chat")
-async def chat(request: Request):
+async def chat_(request: Request):
     data = await request.json()
     print(data)
     user = data["user"]
-    user_message = data["user_message"]
+    token = data["token"]
+    message = data["message"]
     temperature = data["temperature"]
     max_tokens = data["max_tokens"]
-    response = await chatbot_response(user, user_message, temperature, max_tokens)
-    return response
+    try:
+        response = await chat(user, message, temperature, max_tokens)
+    except:
+        return {"user": user, "message": "Error in chat"}
+    state_chart = response[1]
+    response_text = response[0]
+    if state_chart:
+        try:
+            imagen = await imagen_a_bytesio(f"{files_path}images/{user}.png")
+            imagen_base64 = base64.b64encode(imagen).decode("utf-8")
+        except Exception as e:
+            return {"user": user, "message": response_text, "image": None}
+        return {"user": user, "message": response_text, "image": imagen_base64}
+        
+    else:
+        return {"user": user, "message": response_text, "image": None}
 
 if __name__ == "__main__":
     asyncio.run(uvicorn.run(app, host="0.0.0.0", port=8000))
