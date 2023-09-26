@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 import asyncio
 import uvicorn
 from main import chat
+from db import auth_user
 
 load_dotenv()
 
@@ -32,6 +33,8 @@ async def chat_(request: Request):
     message = data["message"]
     temperature = data["temperature"]
     max_tokens = data["max_tokens"]
+    if not await auth_user(user, token):
+        return {"user": user, "message": "Invalid token"}
     try:
         response = await chat(user, message, temperature, max_tokens)
     except:
